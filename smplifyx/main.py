@@ -20,7 +20,8 @@ from __future__ import print_function
 from __future__ import division
 
 import sys
-import os
+import os 
+import pdb
 
 import os.path as osp
 
@@ -80,9 +81,10 @@ def main(**args):
         print('CUDA is not available, exiting!')
         sys.exit(-1)
 
+# pdb.set_trace()
     img_folder = args.pop('img_folder', 'images')
-    dataset_obj = create_dataset(img_folder=img_folder, **args)
-
+    dataset_obj = create_dataset(img_folder=img_folder, **args) 
+    # pdb.set_trace()
     start = time.time()
 
     input_gender = args.pop('gender', 'neutral')
@@ -114,6 +116,7 @@ def main(**args):
                         dtype=dtype,
                         **args)
 
+    #pdb.set_trace()
     male_model = smplx.create(gender='male', **model_params)
     # SMPL-H has no gender-neutral model
     if args.get('model_type') != 'smplh':
@@ -202,7 +205,8 @@ def main(**args):
 
         img = data['img']
         fn = data['fn']
-        keypoints = data['keypoints']
+        keypoints = data['keypoints'] 
+      #  pdb.set_trace()
         print('Processing: {}'.format(data['img_path']))
 
         curr_result_folder = osp.join(result_folder, fn)
@@ -261,6 +265,7 @@ def main(**args):
                              angle_prior=angle_prior,
                              **args)
 
+     #   pdb.set_trace()
     elapsed = time.time() - start
     time_msg = time.strftime('%H hours, %M minutes, %S seconds',
                              time.gmtime(elapsed))

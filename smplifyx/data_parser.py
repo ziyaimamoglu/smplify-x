@@ -17,11 +17,12 @@
 
 from __future__ import absolute_import
 from __future__ import print_function
-from __future__ import division
+from __future__ import division 
 
 import sys
 import os
-import os.path as osp
+import os.path as osp 
+import pdb
 
 import json
 
@@ -131,13 +132,13 @@ class OpenPose(Dataset):
 
         self.img_folder = osp.join(data_folder, img_folder)
         self.keyp_folder = osp.join(data_folder, keyp_folder)
-
         self.img_paths = [osp.join(self.img_folder, img_fn)
                           for img_fn in os.listdir(self.img_folder)
                           if img_fn.endswith('.png') or
                           img_fn.endswith('.jpg') and
                           not img_fn.startswith('.')]
-        self.img_paths = sorted(self.img_paths)
+        self.img_paths = sorted(self.img_paths) 
+        #pdb.set_trace()
         self.cnt = 0
 
     def get_model2data(self):
@@ -179,11 +180,10 @@ class OpenPose(Dataset):
         img_fn, _ = osp.splitext(osp.split(img_path)[1])
 
         keypoint_fn = osp.join(self.keyp_folder,
-                               img_fn + '_keypoints.json')
+                               img_fn + '_keypoints.json') 
         keyp_tuple = read_keypoints(keypoint_fn, use_hands=self.use_hands,
                                     use_face=self.use_face,
                                     use_face_contour=self.use_face_contour)
-
         if len(keyp_tuple.keypoints) < 1:
             return {}
         keypoints = np.stack(keyp_tuple.keypoints)

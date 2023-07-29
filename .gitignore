@@ -1,5 +1,13 @@
 #### joe made this: http://goel.io/joe
-
+data
+models 
+output 
+smplx_debug 
+vposer_v1_0 
+output.zip 
+smpl_segmentation.pkl 
+smplx_parts_segm.pkl 
+homogenus_v1_0
 #####=== Python ===#####
 
 # Byte-compiled / optimized / DLL files
